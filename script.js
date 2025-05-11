@@ -22,7 +22,7 @@ const countryDetails = document.querySelector('.countryDetails');
 const renderCountry = function(countryDetailsObject)
 {
 
-  console.log(countryDetailsObject);
+ // console.log(countryDetailsObject);
 
   while(countryDetails.hasChildNodes()) 
   {
@@ -30,10 +30,10 @@ const renderCountry = function(countryDetailsObject)
   }
   
   const html = `
-    <div class="countryDetails">
+    <div class="countryDetailsCard">
           <h2>Country Name :  ${countryDetailsObject.country}</h2>
           <h3>Capital : ${countryDetailsObject.capital}</h3>
-          <h3>population : ${countryDetailsObject.population}</h3>
+          <h3>Population : ${countryDetailsObject.population}</h3>
           <h3>Currency : ${countryDetailsObject.currency}</h3>
     </div>`;
 
@@ -125,6 +125,11 @@ regionContainer.addEventListener("change",(event) => {
  //alert(selectedIndex + " " + regionContainer.value);
 
   if (selectedIndex === 0)  return;
+
+  while(countryDetails.hasChildNodes()) 
+    {
+      countryDetails.removeChild(countryDetails.firstChild);
+    }
 
   while( countriesTablePerRegion_Container.hasChildNodes()) 
   {

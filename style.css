@@ -184,7 +184,7 @@ body {
   border-left: var(--size) solid transparent;
   border-right: var(--size) solid transparent;
   border-bottom: var(--size) solid black;
-  top: 3.5%;
+  top: 4.5%;
 }
 
 .dropdown_container::after
@@ -192,7 +192,7 @@ body {
   border-left: var(--size) solid transparent;
   border-right: var(--size) solid transparent;
   border-top: var(--size) solid black;
-  top: 4.5%;
+  top: 5.5%;
 }
 
 
@@ -225,7 +225,7 @@ body {
   border: 1px solid rgb(23, 23, 23);
   border-radius: .5rem;
   font-size: 1.5rem;
-  background-color: rgba(226, 169, 169, 0.5);
+  background-color:rgba(226, 169, 169, 0.17);
   cursor: pointer;
 
  
@@ -239,7 +239,37 @@ body {
 }
 
 
-.countrydetails 
+.countryDetails 
 {
-  
+
+  /* width: 60%; */
+  margin-top:1rem;
+ 
+}
+
+.countryDetailsCard 
+{
+  max-width: 60%;
+  /* max-height: 50vh; */
+  margin: 0 auto;
+  border: 1px solid rgb(23, 23, 23);
+  border-radius : 1rem 1rem 0 0;
+}
+
+.countryDetailsCard h2
+{
+
+  padding: 2rem;
+  border-bottom: 1px solid rgb(23, 23, 23);
+
+}
+
+.countryDetailsCard h3
+{
+  padding: 1rem;
+ 
+}
+
+.countryDetailsCard h3:not(:nth-last-child(1)) {
+   border-bottom: 1px solid rgb(23, 23, 23);
 }
