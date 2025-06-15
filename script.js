@@ -50,10 +50,10 @@ function getCountry(Thiscountry)
     .then(data => {
       //renderCountry(data[0]);  
       // console.log(data);
-      console.log(data[0].name.common);
+      //console.log(data[0].name.common);
       // console.log(data[0].population);
       // console.log(Object.values(Object.values(data[0].currencies))[0].name);
-     // return;
+      // return;
 
       let countryDetailsObject = 
       {
@@ -94,42 +94,53 @@ const getCountryAndNeighbour = function(country) {
 
 async function getDataFetch()
 {
-  const url = "https://restcountries.com/v3.1/all";
-  // const response = await fetch(url);
+  const url = "https://restcountries.com/v3.1/all?fields=region";
   
   await fetch(url)
   .then(response => response.json())
-  .then(data => {
+  .then(data =>
+  {
+  let regions = [];
 
-    let regions = [];
-    let set;
-    let regionsDistinct = [];
-      data.forEach(d => 
-        regions.push(d.region)
-        );
+    for(let i = 0; i <data.length; i++) {
+    //console.log(data[i].region);
+      regions.push(data[i].region)
+      }
+       
+        let set;
+        let regionsDistinct = [];
+        set = new Set(regions);
+        regionsDistinct = [...set];
+        //console.log(regionsDistinct);
 
-      set = new Set(regions);
-      regionsDistinct = [...set];
-      //console.log(regionsDistinct);
+    for(let  i=0;i <regionsDistinct.length;i++) {
+      const html = `<option value="${regionsDistinct[i]}">${regionsDistinct[i]}</option>`;
+      regionContainer.insertAdjacentHTML('beforeend',html);
+    }
+  }
+);
 
-  for(let  i=0;i <regionsDistinct.length;i++) {
-    const html = `<option value="${regionsDistinct[i]}">${regionsDistinct[i]}</option>`;
-    regionContainer.insertAdjacentHTML('beforeend',html);
-  }});
 }
 
 
 
 regionContainer.addEventListener("change",(event) => {
   const selectedIndex = regionContainer.selectedIndex;
- //alert(selectedIndex + " " + regionContainer.value);
+ alert(selectedIndex + " " + regionContainer.value);
 
-  if (selectedIndex === 0)  return;
-
-  while(countryDetails.hasChildNodes()) 
+  if (selectedIndex === 0) 
+  {
+    while(countryDetails.hasChildNodes()) 
     {
       countryDetails.removeChild(countryDetails.firstChild);
-    }
+    }               
+    return;
+  }
+
+  while(countryDetails.hasChildNodes()) 
+  {
+    countryDetails.removeChild(countryDetails.firstChild);
+  }
 
   while( countriesTablePerRegion_Container.hasChildNodes()) 
   {
@@ -151,7 +162,7 @@ regionContainer.addEventListener("change",(event) => {
       for(let prop in data) {
        // console.log(data[prop].name.common)
        let countryName = data[prop].name.common;
-       console.log(countryName);
+       //console.log(countryName);
        countriesOfRegion.push(countryName);
        let html = `<p class="countryOfRegion" onclick="getCountry(this)">${countryName}</p>`;
           
@@ -159,7 +170,7 @@ regionContainer.addEventListener("change",(event) => {
            
       }
 
-      console.log(countriesOfRegion);
+    //console.log(countriesOfRegion);
    //   return `${data[prop].name.common}`;
 
     })
