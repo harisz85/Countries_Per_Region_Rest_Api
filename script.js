@@ -126,7 +126,7 @@ async function getDataFetch()
 
 regionContainer.addEventListener("change",(event) => {
   const selectedIndex = regionContainer.selectedIndex;
- alert(selectedIndex + " " + regionContainer.value);
+ //alert(selectedIndex + " " + regionContainer.value);
 
   if (selectedIndex === 0) 
   {
